@@ -1,5 +1,7 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:my_portfolio/src/config/export/export.dart';
+import 'package:my_portfolio/src/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+import 'package:my_portfolio/src/features/dashboard/presentation/bloc/dashboard_event.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +31,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<ServiceBloc>(
           create:
               (context) => locator<ServiceBloc>()..add(GetAddServiceEvent()),
+        ),
+        BlocProvider<DashboardBloc>(
+          create:
+              (context) => locator<DashboardBloc>()..add(GetDashboardEvent()),
         ),
       ],
       child: const MaterialApp(

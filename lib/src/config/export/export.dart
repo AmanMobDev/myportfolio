@@ -14,7 +14,6 @@ export 'package:firebase_storage/firebase_storage.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
-// export 'package:flutter_local_notifications/flutter_local_notifications.dart';
 export 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 export 'package:flutter_svg/svg.dart';
 export 'package:fluttertoast/fluttertoast.dart';
@@ -28,6 +27,7 @@ export 'package:my_portfolio/src/config/services/firebase/database/base_database
 export 'package:my_portfolio/src/config/services/firebase/database/database_services.dart';
 export 'package:my_portfolio/src/config/services/firebase/database/firebase_options.dart';
 export 'package:my_portfolio/src/config/services/firebase/notification/push_notification.dart';
+export 'package:my_portfolio/src/config/services/network/base_api_services.dart';
 export 'package:my_portfolio/src/config/string/app_strings.dart';
 export 'package:my_portfolio/src/core/components/custom_text_widget.dart';
 export 'package:my_portfolio/src/core/components/drawer.dart';

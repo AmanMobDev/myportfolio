@@ -1,7 +1,5 @@
-import 'dart:convert';
-
 import 'package:googleapis_auth/auth_io.dart' as auth;
-import 'package:http/http.dart' as http;
+import 'package:my_portfolio/src/config/services/network/network_api_services.dart';
 
 import '../../../export/export.dart';
 
@@ -10,9 +8,7 @@ import '../../../export/export.dart';
  ******************************************************************************/
 class PushNotificationService {
   final FirebaseMessaging _messaging = FirebaseMessaging.instance;
-  // final FlutterLocalNotificationsPlugin _localNotificationsPlugin =
-  //     FlutterLocalNotificationsPlugin();
-  // Singleton pattern
+
   static final PushNotificationService _instance =
       PushNotificationService._internal();
   factory PushNotificationService() => _instance;
@@ -31,17 +27,6 @@ class PushNotificationService {
     } else {
       debugPrint("Notification permission denied!");
     }
-
-    // // Initialize local notifications
-    // const AndroidInitializationSettings initializationSettingsAndroid =
-    //     AndroidInitializationSettings('@mipmap/ic_launcher'); // Your app icon
-    //
-    // const InitializationSettings initializationSettings =
-    //     InitializationSettings(
-    //   android: initializationSettingsAndroid,
-    // );
-    //
-    // await _localNotificationsPlugin.initialize(initializationSettings);
   }
 
   Future<void> getFCMToken() async {
@@ -70,32 +55,6 @@ class PushNotificationService {
     });
   }
 
-  // Future<void> _showLocalNotification(RemoteMessage message) async {
-  //   const AndroidNotificationDetails androidPlatformChannelSpecifics =
-  //       AndroidNotificationDetails(
-  //     'your_channel_id', // Replace with your channel id
-  //     'your_channel_name', // Replace with your channel name
-  //     channelDescription:
-  //         'your_channel_description', // Replace with your channel description
-  //     importance: Importance.max,
-  //     priority: Priority.high,
-  //     showWhen: false,
-  //   );
-  //
-  //   const NotificationDetails platformChannelSpecifics = NotificationDetails(
-  //     android: androidPlatformChannelSpecifics,
-  //   );
-  //
-  //   await _localNotificationsPlugin.show(
-  //     0, // Notification ID
-  //     message.notification?.title,
-  //     message.notification?.body,
-  //     platformChannelSpecifics,
-  //     payload: message.data['payload'], // Optional payload
-  //   );
-  // }
-
-  // Load the service account key file
   Future<String> getAccessToken() async {
     String url = "https://www.googleapis.com/auth/firebase.messaging";
 
@@ -140,22 +99,36 @@ class PushNotificationService {
 
     debugPrint("Access Token: ${data[0]['token'].toString()}");
 
-    final response = await http.post(
-      Uri.parse(
-        'https://fcm.googleapis.com/v1/projects/myportfolio-60082/messages:send',
-      ),
-      headers: {
-        'Authorization': 'Bearer $accessToken',
-        'Content-Type': 'application/json',
-      },
-      body: jsonEncode({
+    NetWorkAPIService().postApi(
+      'https://fcm.googleapis.com/v1/projects/myportfolio-60082/messages:send',
+      {
         "message": {
           "token": data[0]['token'].toString(),
           "notification": {"title": name, "body": query},
         },
-      }),
+      },
+      {
+        'Authorization': 'Bearer $accessToken',
+        'Content-Type': 'application/json',
+      },
     );
 
-    debugPrint(response.body);
+    // final response = await http.post(
+    //   Uri.parse(
+    //     'https://fcm.googleapis.com/v1/projects/myportfolio-60082/messages:send',
+    //   ),
+    //   headers: {
+    //     'Authorization': 'Bearer $accessToken',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: jsonEncode({
+    //     "message": {
+    //       "token": data[0]['token'].toString(),
+    //       "notification": {"title": name, "body": query},
+    //     },
+    //   }),
+    // );
+
+    // debugPrint(response.body);
   }
 }
