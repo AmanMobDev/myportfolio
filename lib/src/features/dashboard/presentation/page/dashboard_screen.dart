@@ -1,8 +1,4 @@
-import 'package:my_portfolio/src/features/dashboard/data/model/request/dashboard_data_model.dart';
-import 'package:my_portfolio/src/features/dashboard/presentation/bloc/dashboard_bloc.dart';
-
 import '../../../../config/export/export.dart';
-import '../widget/read_more.dart';
 
 /*******************************************************************************
  *Created By Aman Mishra

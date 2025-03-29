@@ -28,6 +28,7 @@ export 'package:my_portfolio/src/config/services/firebase/database/database_serv
 export 'package:my_portfolio/src/config/services/firebase/database/firebase_options.dart';
 export 'package:my_portfolio/src/config/services/firebase/notification/push_notification.dart';
 export 'package:my_portfolio/src/config/services/network/base_api_services.dart';
+export 'package:my_portfolio/src/config/services/network/network_api_services.dart';
 export 'package:my_portfolio/src/config/string/app_strings.dart';
 export 'package:my_portfolio/src/core/components/custom_text_widget.dart';
 export 'package:my_portfolio/src/core/components/drawer.dart';
@@ -39,6 +40,9 @@ export 'package:my_portfolio/src/core/route/route.dart';
 export 'package:my_portfolio/src/core/route/routes_name.dart';
 export 'package:my_portfolio/src/core/utils/utils.dart';
 export 'package:my_portfolio/src/features/certificate/presentation/pages/certificate_screen.dart';
+export 'package:my_portfolio/src/features/dashboard/data/model/request/dashboard_data_model.dart';
+export 'package:my_portfolio/src/features/dashboard/presentation/bloc/dashboard_bloc.dart';
+export 'package:my_portfolio/src/features/dashboard/presentation/widget/read_more.dart';
 export 'package:my_portfolio/src/features/home/presentation/pages/home_screen.dart';
 export 'package:my_portfolio/src/features/project/data/project_data.dart';
 export 'package:my_portfolio/src/features/project/presentation/pages/project_screen.dart';
